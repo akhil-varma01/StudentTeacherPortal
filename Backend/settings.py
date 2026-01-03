@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,13 +80,9 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'StudentInfo',
-        'USER': 'postgres',
-        'PASSWORD': 'qwertyuiop',
-        'HOST': 'localhost'
-    }
+    "default": dj_database_url.parse(
+        os.environ.get("postgresql://student_teacher_db_user:uoF1tKfw9wf1ReBUheFOPSk7xSj8oKqW@dpg-d5cmji2li9vc73cqerc0-a/student_teacher_db")
+    )
 }
 
 # Password validation
