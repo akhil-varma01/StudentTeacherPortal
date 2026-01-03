@@ -81,7 +81,9 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.parse(
-        os.environ.get("postgresql://student_teacher_db_user:uoF1tKfw9wf1ReBUheFOPSk7xSj8oKqW@dpg-d5cmji2li9vc73cqerc0-a/student_teacher_db")
+        os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 
